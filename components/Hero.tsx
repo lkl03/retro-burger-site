@@ -11,7 +11,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-20 pt-14 md:grid-cols-[1.2fr_1fr] md:items-center md:pb-28 md:pt-20">
         <Reveal>
           <p className="sticker border-2 border-vino bg-manteca text-vino -rotate-2">
-            Hamburguesería · Buenos Aires
+            Hamburguesería · Colegiales, CABA
           </p>
           <h1 className="display mt-10 text-[clamp(4.5rem,16vw,11rem)]">
             FIN
@@ -21,7 +21,8 @@ export function Hero() {
             </span>
           </h1>
           <p className="mt-5 max-w-md text-lg font-medium leading-relaxed text-tinta/80">
-            {site.tagline} Doble carne, cheddar y pan de papa. Lo demás sobra.
+            {site.tagline} Carta corta, smash burgers y opción sin TACC, en
+            Moldes 880.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
@@ -31,12 +32,12 @@ export function Hero() {
               Ver el menú
             </a>
             <a
-              href={site.whatsapp}
+              href={site.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="pressable rounded-full border-2 border-vino px-8 py-4 font-bold uppercase tracking-wide text-vino transition-colors duration-200 hover:bg-vino hover:text-crema"
             >
-              {site.whatsappLabel}
+              Seguinos en Instagram
             </a>
           </div>
         </Reveal>

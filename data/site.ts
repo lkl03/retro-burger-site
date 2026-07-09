@@ -2,27 +2,32 @@ export const site = {
   name: "FINO",
   tagline: "Hamburguesas finas, cero vueltas.",
   description:
-    "FINO es una hamburguesería de barrio en Buenos Aires. Doble carne, cheddar, pan de papa y una barra que se toma en serio lo simple.",
+    "FINO es una hamburguesería en Colegiales, Buenos Aires. Carta corta, smash burgers y opción de pan sin TACC. Moldes 880, CABA.",
   url: "https://retro-burger-site.vercel.app",
   instagram: "https://www.instagram.com/fino_arg",
   instagramHandle: "@fino_arg",
-  // PLACEHOLDER: reemplazar por el número real de WhatsApp del local
-  whatsapp: "https://wa.me/5491100000000",
-  whatsappLabel: "Pedir por WhatsApp",
-  // PLACEHOLDER: dirección real del local
-  address: "Dirección a confirmar · Buenos Aires, Argentina",
+  address: "Moldes 880, C1426 Ciudad Autónoma de Buenos Aires",
+  neighborhood: "Colegiales",
+  // Horarios publicados en prensa (Canal 26, may 2026). Confirmar cambios en Instagram.
   hours: [
-    // PLACEHOLDER: horarios reales del local
-    { days: "Martes a jueves", time: "19:00 – 23:30" },
-    { days: "Viernes y sábados", time: "19:00 – 00:30" },
-    { days: "Domingos", time: "19:00 – 23:00" },
+    { days: "Todos los días", time: "12:00 – 15:30" },
+    { days: "", time: "19:00 – 23:30" },
   ],
+  hoursNote: "Horarios actualizados en Instagram",
+  // Embed de Google Maps sin API key (query directa a la dirección).
+  mapsEmbed:
+    "https://www.google.com/maps?q=Moldes+880,+C1426+Ciudad+Aut%C3%B3noma+de+Buenos+Aires&output=embed",
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=FINO+Moldes+880+Ciudad+Aut%C3%B3noma+de+Buenos+Aires",
+  // Link directo a las reseñas del local en Google Maps (búsqueda del negocio).
+  reviewsUrl:
+    "https://www.google.com/maps/search/?api=1&query=FINO+hamburgueser%C3%ADa+Moldes+880+CABA",
 };
 
 export const nav = [
   { label: "Menú", href: "#menu" },
   { label: "La casa", href: "#casa" },
   { label: "Avisos", href: "#avisos" },
-  { label: "Fotos", href: "#fotos" },
+  { label: "Instagram", href: "#instagram" },
   { label: "Dónde", href: "#donde" },
 ];

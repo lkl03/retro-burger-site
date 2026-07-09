@@ -29,12 +29,12 @@ export function Nav() {
               </a>
             ))}
             <a
-              href={site.whatsapp}
+              href={site.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="pressable rounded-full bg-vino px-5 py-2 text-sm font-bold uppercase tracking-wide text-crema transition-colors duration-200 hover:bg-vino-deep"
             >
-              Pedir
+              {site.instagramHandle}
             </a>
           </nav>
 
@@ -73,12 +73,12 @@ export function Nav() {
               </a>
             ))}
             <a
-              href={site.whatsapp}
+              href={site.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="pressable mt-2 rounded-full bg-vino px-5 py-3 text-center font-bold uppercase tracking-wide text-crema"
             >
-              {site.whatsappLabel}
+              Seguinos en Instagram
             </a>
           </nav>
         </div>

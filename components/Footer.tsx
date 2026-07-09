@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <Mascot className="h-10 w-10" />
             <p className="font-semibold uppercase tracking-wide">
-              Hamburguesas finas desde Buenos Aires
+              Moldes 880 · Colegiales, CABA
             </p>
           </div>
           <div className="flex gap-6 font-bold uppercase tracking-wide">
@@ -22,12 +22,12 @@ export function Footer() {
               Instagram
             </a>
             <a
-              href={site.whatsapp}
+              href={site.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-opacity duration-200 hover:opacity-60"
             >
-              WhatsApp
+              Cómo llegar
             </a>
           </div>
         </div>

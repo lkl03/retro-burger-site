@@ -21,7 +21,15 @@ export const metadata: Metadata = {
     template: "%s · FINO",
   },
   description: site.description,
-  keywords: ["hamburguesería", "burgers", "Buenos Aires", "smash burger", "FINO"],
+  keywords: [
+    "hamburguesería",
+    "burgers",
+    "Colegiales",
+    "Buenos Aires",
+    "smash burger",
+    "FINO",
+    "Moldes 880",
+  ],
   openGraph: {
     title: "FINO · Hamburguesas finas, cero vueltas",
     description: site.description,
