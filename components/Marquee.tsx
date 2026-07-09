@@ -1,9 +1,9 @@
 const words = [
-  "Doble carne",
-  "Cheddar de verdad",
-  "Pan de papa",
+  "Smash burgers",
+  "Papas Finas",
   "Opción sin TACC",
-  "Hecho en el barrio",
+  "Colegiales",
+  "Moldes 880",
 ];
 
 export function Marquee() {
