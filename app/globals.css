@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./scroll-walk.css";
 
 @theme {
   --color-vino: #641423;
@@ -132,3 +133,56 @@ body {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- scroll-walk: tema FINO ---------- */
+.fino-walk {
+  --sw-bg: #2a0710;
+  --sw-ink: var(--color-crema);
+  --sw-ink-soft: rgba(243, 234, 216, 0.75);
+  --sw-accent: var(--color-manteca);
+  --sw-font-body: var(--font-archivo);
+  --sw-stop-h: 150lvh;
+}
+.fino-walk .sw-stop:first-child { --sw-stop-h: 120lvh; }
+.fino-walk .sw-stop:last-child { --sw-stop-h: 170lvh; }
+.fino-walk .sw-copy { margin-top: max(26vh, 8rem); max-width: 36rem; }
+.fino-walk h1, .fino-walk h2 { text-wrap: balance; }
+.fino-walk__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-manteca);
+}
+.fino-walk__note {
+  position: absolute;
+  right: clamp(16px, 3vw, 40px);
+  bottom: 22px;
+  z-index: 3;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: rgba(243, 234, 216, 0.55);
+  pointer-events: none;
+}
+@media (max-width: 860px) {
+  .fino-walk .sw-copy { margin-top: auto; margin-bottom: calc(10vh + 34px); }
+  .fino-walk .sw-hint { display: none; }
+  .fino-walk__note { left: 16px; right: auto; bottom: 10px; }
+}
+
+/* estrellas parciales: --pct = rating / 5 */
+.stars {
+  background: linear-gradient(90deg, var(--star, var(--color-manteca)) var(--pct, 100%), rgba(100, 20, 35, 0.2) var(--pct, 100%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.08em;
+}
+.link-line {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  transition: background-size 400ms var(--ease-fino);
+}
+.link-line:hover, .link-line:focus-visible { background-size: 100% 2px; }

@@ -8,7 +8,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40">
+    <header className="fixed inset-x-0 top-0 z-40">
       <div className="mx-auto max-w-6xl px-4 pt-4">
         <div className="flex h-16 items-center justify-between rounded-full border-2 border-vino bg-crema/95 px-5 backdrop-blur-sm">
           <a href="#top" className="flex items-center gap-2" aria-label="FINO, inicio">

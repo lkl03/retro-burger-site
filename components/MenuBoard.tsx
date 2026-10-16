@@ -60,9 +60,9 @@ export function MenuBoard() {
 
             {/* clásicas por tamaño */}
             <div className="mt-12 overflow-x-auto">
-              <table className="w-full min-w-[420px] border-separate border-spacing-y-2 text-center">
+              <table className="w-full border-separate border-spacing-y-2 text-center">
                 <thead>
-                  <tr className="text-xs font-bold uppercase tracking-[0.2em]">
+                  <tr className="text-[0.6rem] font-bold uppercase tracking-[0.12em] sm:text-xs sm:tracking-[0.2em]">
                     <th className="text-left" scope="col">
                       <span className="sr-only">Clásicas</span>
                     </th>
@@ -74,12 +74,12 @@ export function MenuBoard() {
                 <tbody>
                   {clasicas.map((item) => (
                     <tr key={item.name}>
-                      <th scope="row" className="display border-y-2 border-vino py-2 text-left text-xl">
+                      <th scope="row" className="display border-y-2 border-vino py-2 text-left text-base sm:text-xl">
                         {item.name}
                       </th>
-                      <td className="display border-y-2 border-vino py-2 text-xl">{item.prices.simple}</td>
-                      <td className="display border-y-2 border-vino py-2 text-xl">{item.prices.doble}</td>
-                      <td className="display border-y-2 border-vino py-2 text-xl">{item.prices.triple}</td>
+                      <td className="display border-y-2 border-vino py-2 text-base sm:text-xl">{item.prices.simple}</td>
+                      <td className="display border-y-2 border-vino py-2 text-base sm:text-xl">{item.prices.doble}</td>
+                      <td className="display border-y-2 border-vino py-2 text-base sm:text-xl">{item.prices.triple}</td>
                     </tr>
                   ))}
                 </tbody>

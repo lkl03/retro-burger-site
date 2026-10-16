@@ -1,25 +1,23 @@
-import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { Gallery } from "@/components/Gallery";
-import { Hero } from "@/components/Hero";
+import { InstagramFeed } from "@/components/InstagramFeed";
 import { Marquee } from "@/components/Marquee";
 import { MenuBoard } from "@/components/MenuBoard";
 import { Nav } from "@/components/Nav";
 import { Promos } from "@/components/Promos";
+import { ScrollWalk } from "@/components/ScrollWalk";
 
 export default function Home() {
   return (
     <>
       <div className="grain" aria-hidden="true" />
       <Nav />
-      <main>
-        <Hero />
+      <main id="top">
+        <ScrollWalk />
         <Marquee />
         <MenuBoard />
-        <About />
         <Promos />
-        <Gallery />
+        <InstagramFeed />
         <Contact />
       </main>
       <Footer />

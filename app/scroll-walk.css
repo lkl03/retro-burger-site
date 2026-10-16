@@ -1,0 +1,66 @@
+/* scroll-walk — estilos base. Personalizar con los tokens, no tocando la mecánica.
+   Tokens: --sw-bg --sw-ink --sw-ink-soft --sw-accent --sw-font-display --sw-font-body
+           --sw-stop-h (scroll por parada, default 150lvh) */
+
+.sw { position: relative; background: var(--sw-bg, #111); color: var(--sw-ink, #f3eee6); }
+
+.sw-stage {
+  position: sticky; top: 0; height: 100vh; height: 100lvh;
+  overflow: hidden; background: var(--sw-bg, #111);
+  --sw-focus: 50%;
+}
+.sw-stage > [data-sw-poster],
+.sw-stage > [data-sw-clip] {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: var(--sw-focus) 50%;
+}
+.sw-stage > [data-sw-poster] { opacity: 0; will-change: opacity, transform; }
+.sw-stage > [data-sw-poster]:first-of-type { opacity: 1; }
+.sw-stage > [data-sw-clip] { visibility: hidden; }
+.sw-stage > [data-sw-clip].is-shown { visibility: visible; }
+
+/* Velos para que el texto se lea encima del vídeo */
+.sw-veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, var(--sw-bg) 8%, color-mix(in srgb, var(--sw-bg) 55%, transparent) 45%, transparent 78%);
+}
+@media (min-width: 861px) {
+  .sw-veil {
+    background:
+      linear-gradient(to right, color-mix(in srgb, var(--sw-bg) 88%, transparent), color-mix(in srgb, var(--sw-bg) 35%, transparent) 38%, transparent 66%),
+      linear-gradient(to top, color-mix(in srgb, var(--sw-bg) 70%, transparent), transparent 40%);
+  }
+}
+
+/* Paradas: fluyen por encima del escenario */
+.sw-stops { position: relative; z-index: 2; margin-top: -100vh; margin-top: -100lvh; }
+.sw-stop {
+  min-height: var(--sw-stop-h, 150lvh);
+  padding: 0 clamp(16px, 5vw, 72px);
+  display: flex; align-items: flex-start;
+}
+/* Escritorio: el texto fluye con el scroll (entra durante la pausa de la cámara y se va
+   antes de que llegue el siguiente). Móvil: queda fijo abajo mientras dura la parada. */
+.sw-copy {
+  position: relative; margin-top: max(24vh, 7rem);
+  max-width: 34rem;
+  opacity: .35; transform: translateY(12px);
+  transition: opacity 700ms cubic-bezier(.32,.72,0,1), transform 700ms cubic-bezier(.32,.72,0,1);
+}
+.sw-stop.is-current .sw-copy { opacity: 1; transform: none; }
+@media (max-width: 860px) {
+  .sw-copy { position: sticky; bottom: calc(24px + env(safe-area-inset-bottom)); margin-top: auto; margin-bottom: 18vh; }
+  .sw-stop { align-items: flex-end; }
+}
+
+/* Raíl de paradas (opcional) */
+.sw-rail { position: absolute; right: clamp(16px, 3vw, 40px); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; z-index: 3; }
+.sw-rail a { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--sw-ink) 40%, transparent); transition: transform .5s, background .5s; }
+.sw-rail a[aria-current="true"] { background: var(--sw-accent, #d0703a); transform: scale(1.6); }
+@media (max-width: 860px) { .sw-rail { display: none; } }
+
+.sw-hint { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); font: 500 11px/1 var(--sw-font-body, system-ui); letter-spacing: .2em; text-transform: uppercase; color: var(--sw-ink-soft, #cfc6b8); opacity: calc(1 - var(--sw-progress, 0) * 8); z-index: 3; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sw-copy { transition: none; opacity: 1; transform: none; }
+}

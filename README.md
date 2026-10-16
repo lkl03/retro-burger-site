@@ -49,18 +49,27 @@ Todo el contenido vive en `data/`:
 
 El tono del sitio es corto, real y porteño: sin lore inventado, sin promos falsas, sin personificar la mascota. La mascota es un recurso gráfico, nada más. Cualquier claim nuevo debe salir del Instagram real (@fino_arg) o del local.
 
-### Sección Instagram (`components/Gallery.tsx`)
+### Paseo por el local (`components/ScrollWalk.tsx`)
 
-Grilla estática de 4 posts que linkea a @fino_arg. Las imágenes son placeholders de picsum: reemplazar cada `src` por fotos reales exportadas del feed (guardarlas en `public/instagram/`). Las captions son neutrales ("Menú FINO", "Local", etc.); usar captions reales solo si se copian textuales de los posts. Para un feed sincronizado automático, se puede embeber un widget tipo Elfsight/Behold en esa sección.
+Arriba de todo hay un "paseo con el scroll": un escenario fijo con 3 clips (`public/video/clip-k.mp4` y `-m` para móvil) que unen 4 paradas (`public/world/stop-i.webp`, frames reales del vídeo). El motor es `lib/scroll-walk.js` (vanilla, sin dependencias; estilos en `app/scroll-walk.css` + tema `.fino-walk` en `globals.css`).
+
+- **Copy de cada parada**: array `STOPS` en `ScrollWalk.tsx` (sale de `data/`).
+- **Ritmo**: `--sw-stop-h` en `.fino-walk` (scroll por parada) y `hold` en `mountScrollWalk`.
+- **Cómo se generó**: `media/scroll-walk/plan.json` (prompts por clip). Los clips son de Google Flow (Veo 3.1 Fast, 720p reescalado) a partir de fotos del local publicadas en Google Maps; es una **versión demo**. Para la versión final: fotos propias horizontales del dueño (5–8, en el orden en que se camina) y regenerar con la skill `/scroll-walk` en modo PRO; solo cambian `public/video` y `public/world`, no el código.
+- Lo que la IA inventó (costados del salón en el clip 3, una hamburguesa intermedia) conviene que lo revise el dueño.
+
+### Sección Instagram (`components/InstagramFeed.tsx`)
+
+Grilla de 8 posts reales de @fino_arg: fotos en `public/ig/<code>.webp`, captions textuales recortadas en `data/site.ts` (`igPosts`). Para un feed que se actualice solo, crear un widget Instagram Feed en Elfsight conectado a @fino_arg y poner su id en `NEXT_PUBLIC_ELFSIGHT_IG_APP` (Vercel): reemplaza la grilla.
 
 ### Google Maps y reseñas (`components/Contact.tsx`)
 
-- El mapa es un iframe de Google Maps **sin API key** apuntando a la dirección (`site.mapsEmbed`). Si el cliente comparte el Place ID del negocio, conviene reemplazarlo por el embed con el pin oficial del local.
-- El bloque "Reseñas" no muestra reseñas inventadas: es un CTA que abre las reseñas reales en Google (`site.reviewsUrl`). Si más adelante se copian reseñas reales del perfil de Google, agregarlas con nombre/fecha textuales.
+- El mapa es un iframe de Google Maps **sin API key** apuntando a la dirección (`site.mapsEmbed`).
+- La tarjeta de Google sobre el mapa muestra rating y cantidad de reseñas reales (`site.google`, verificados el 2026-10-16): actualizarlos a mano. No hay reseñas inventadas; "Leer reseñas" abre el perfil real (`?cid=`).
 
 ### Placeholders pendientes de confirmar con el cliente
 
-- Fotos reales para la sección Instagram (hoy picsum).
+- Fotos propias horizontales del local para la versión final del paseo (hoy: fotos de Google Maps).
 - Precios vigentes del menú.
 - Horarios (hoy tomados de prensa, may 2026: todos los días 12:00–15:30 y 19:00–23:30).
 - WhatsApp del local (no se publica ninguno hasta tener el real; el CTA actual es Instagram).
