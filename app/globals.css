@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./scroll-walk.css";
 
 @theme {
   --color-vino: #641423;
@@ -33,22 +34,6 @@ body {
 
 /* ---------- brand utilities ---------- */
 
-/* checkerboard texture, tone-on-tone like the menu story background */
-.checker {
-  background-image:
-    linear-gradient(45deg, var(--checker-c, rgba(71, 13, 24, 0.5)) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--checker-c, rgba(71, 13, 24, 0.5)) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--checker-c, rgba(71, 13, 24, 0.5)) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--checker-c, rgba(71, 13, 24, 0.5)) 75%);
-  background-size: 48px 48px;
-  background-position: 0 0, 0 24px, 24px -24px, -24px 0;
-}
-
-.checker-sm {
-  background-size: 24px 24px;
-  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
-}
-
 /* rounded rectangular frame with thin border, like the menu poster card */
 .poster-frame {
   border: 2px solid currentColor;
@@ -79,16 +64,6 @@ body {
   box-shadow: 0 1px 0 rgba(38, 20, 26, 0.25);
 }
 
-/* print-like grain over the whole page */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 /* display type defaults */
 .display {
   font-family: var(--font-display), sans-serif;
@@ -108,17 +83,6 @@ body {
   animation: marquee 28s linear infinite;
 }
 
-/* scroll reveal (driven by Reveal component) */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms var(--ease-fino), transform 700ms var(--ease-fino);
-}
-.reveal[data-shown="true"] {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* pressable feedback */
 .pressable {
   transition: transform 160ms var(--ease-fino);
@@ -129,6 +93,151 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
-  .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- botones: un solo sistema ----------
+   .btn-solid   relleno (crema sobre oscuro, vino sobre claro) → hover dorado con texto vino
+   .btn-outline borde crema → hover relleno crema con texto vino */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 350ms var(--ease-fino), color 350ms var(--ease-fino),
+    border-color 350ms var(--ease-fino), transform 350ms var(--ease-fino);
+}
+.btn:hover, .btn:focus-visible { transform: translateY(-2px); }
+.btn:active { transform: scale(0.97); }
+.btn-solid { background: var(--color-crema); border-color: var(--color-crema); color: var(--color-vino); }
+.btn-solid--vino { background: var(--color-vino); border-color: var(--color-vino); color: var(--color-crema); }
+.btn-solid:hover, .btn-solid:focus-visible {
+  background: var(--color-manteca); border-color: var(--color-manteca); color: var(--color-vino);
+}
+.btn-outline { border-color: var(--color-crema); color: var(--color-crema); background: transparent; }
+.btn-outline:hover, .btn-outline:focus-visible { background: var(--color-crema); color: var(--color-vino); }
+.btn svg { width: 1rem; height: 1rem; }
+
+/* nav: oculta en el hero, aparece desde la segunda parada (html[data-nav]) */
+.site-nav {
+  transform: translateY(-140%);
+  opacity: 0;
+  transition: transform 700ms var(--ease-fino), opacity 500ms var(--ease-fino);
+}
+html[data-nav] .site-nav { transform: none; opacity: 1; }
+
+/* ---------- scroll-walk: tema FINO ---------- */
+.fino-walk {
+  --sw-bg: #2a0710;
+  --sw-ink: var(--color-crema);
+  --sw-ink-soft: rgba(243, 234, 216, 0.8);
+  --sw-accent: var(--color-manteca);
+  --sw-font-body: var(--font-archivo);
+  --sw-stop-h: 120lvh;
+}
+.fino-walk h1, .fino-walk h2 { text-wrap: balance; }
+.fino-walk .sw-copy { opacity: 1; transform: none; }
+/* velo central solo para el hero: se apaga al bajar */
+.fino-walk__heroveil {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 55% at 50% 48%, rgba(42, 7, 16, 0.72), rgba(42, 7, 16, 0.25) 70%, transparent);
+  opacity: calc(1 - var(--sw-progress, 0) * 4);
+}
+.fino-walk .sw-stop:first-child { justify-content: center; align-items: center; min-height: 115lvh; }
+.fino-walk .sw-stop:first-child .sw-copy {
+  margin: 0; position: sticky; top: 0; height: 100lvh; max-width: none; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.fino-walk .fw-stop--panel { padding-bottom: 38vh; justify-content: center; }
+.fino-walk .fw-stop--panel .sw-copy { margin-top: max(16vh, 7rem); max-width: 76rem; width: 100%; }
+.fw-title {
+  color: var(--color-crema);
+  text-shadow: 0 6px 30px rgba(20, 3, 8, 0.6);
+}
+
+/* tarjeta crema sobre el vídeo, como la carta de la pantalla del local */
+.fw-panel {
+  background: color-mix(in srgb, var(--color-crema) 96%, transparent);
+  color: var(--color-vino);
+  border: 2px solid var(--color-vino);
+  border-radius: 1.75rem;
+  padding: clamp(1.3rem, 2.6vw, 2.2rem);
+  box-shadow: 0 30px 80px -30px rgba(10, 2, 4, 0.75);
+}
+
+.fino-walk__chevron {
+  pointer-events: auto;
+  color: var(--color-crema);
+  animation: chevron-bob 2.2s var(--ease-fino) infinite;
+}
+.fino-walk__chevron svg { width: 2.4rem; height: 2.4rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+@keyframes chevron-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 8px; }
+}
+
+/* motion de entrada: .fw-in sube; .fw-from-left / .fw-from-right entran de costado.
+   Se activan la primera vez que la parada es la actual (.is-seen, del motor). */
+.fw-in, .fw-from-left, .fw-from-right {
+  opacity: 0;
+  transition: opacity 800ms var(--ease-fino), transform 1000ms var(--ease-fino);
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+.fw-in { transform: translateY(26px); }
+.fw-from-left { transform: translateX(-60px); }
+.fw-from-right { transform: translateX(60px); }
+.is-seen .fw-in, .is-seen .fw-from-left, .is-seen .fw-from-right { opacity: 1; transform: none; }
+
+@media (max-width: 860px) {
+  .fino-walk .fw-stop--panel { padding-bottom: 26vh; align-items: flex-start; }
+  .fino-walk .fw-stop--panel .sw-copy { position: relative; bottom: auto; margin: 52svh 0 0; }
+  .fw-from-left, .fw-from-right { transform: translateY(26px); }
+}
+
+/* redes: fondo sólido con brillos que derivan (como Hong Kong Style) */
+.socials {
+  background: var(--color-vino-deep);
+}
+.socials__fade {
+  position: absolute; inset: -30vh 0 auto; height: 30vh; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--color-vino-deep));
+}
+.socials__glow {
+  position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; opacity: 0.55;
+  animation: glow-drift 18s ease-in-out infinite alternate;
+}
+@keyframes glow-drift {
+  from { transform: translate3d(-4%, -3%, 0) scale(1); }
+  to { transform: translate3d(5%, 4%, 0) scale(1.12); }
+}
+.ig-track { scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding-inline: max(1rem, calc((100vw - 72rem) / 2 + 1rem)); }
+.ig-track::-webkit-scrollbar { display: none; }
+.ig-track > li { scroll-snap-align: start; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fw-in, .fw-from-left, .fw-from-right { opacity: 1; transform: none; transition: none; }
+  .fino-walk__chevron, .socials__glow { animation: none; }
+  .site-nav { transition: none; }
+}
+
+/* estrellas parciales: --pct = rating / 5 */
+.stars {
+  background: linear-gradient(90deg, var(--star, var(--color-manteca)) var(--pct, 100%), rgba(100, 20, 35, 0.2) var(--pct, 100%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.08em;
+}
+.link-line {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  transition: background-size 400ms var(--ease-fino);
+}
+.link-line:hover, .link-line:focus-visible { background-size: 100% 2px; }

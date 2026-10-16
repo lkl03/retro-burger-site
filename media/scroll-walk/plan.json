@@ -1,0 +1,42 @@
+{
+  "engine": "flow",
+  "model": "veo_3_1_fast",
+  "duration": 8,
+  "aspect_ratio": "16:9",
+  "negative": "cut, scene change, fade, dissolve, crossfade, morphing, warping geometry, flicker, zoom, fisheye distortion, shaky handheld, fast motion, new people appearing, distorted faces, extra objects, changed signage text, lighting change, letterbox, audio, music, sound",
+  "clips": [
+    {
+      "id": 1,
+      "start": "keyframes/kf-0.png",
+      "end": "keyframes/kf-1.png",
+      "move": "push",
+      "focus": [
+        0.42,
+        0.55
+      ],
+      "prompt": "Vertical photo framed in the center of a 16:9 canvas with soft blurred side panels; keep that framing for the whole clip. Smooth first-person POV walk through a modern burger restaurant with a deep red ceiling, red bistro tables and chairs, white tiled walls and a black metal mezzanine. One continuous take on a steady gimbal at eye level. The camera walks slowly forward between the red tables and turns gently left toward the long red counter, until it faces the counter with the illuminated 'MENU FINO' screen on the left, the open kitchen behind the counter and the big FINO wordmark with the curly-haired mascot on the white wall to the right. Gentle ease-in and ease-out, settling exactly on the final frame. Preserve the real architecture, colors and warm lighting exactly. Photorealistic."
+    },
+    {
+      "id": 2,
+      "start": "keyframes/kf-1.png",
+      "end": "keyframes/kf-2.png",
+      "move": "pan-left",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "prompt": "Vertical photo framed in the center of a 16:9 canvas with soft blurred side panels; keep that framing for the whole clip. Smooth first-person POV inside a modern burger restaurant with a deep red ceiling with exposed ducts and red bistro furniture. One continuous take on a steady gimbal at eye level. The camera turns slowly to the left, away from the red counter, until it faces the white wall painted with large mustard-yellow letters 'ES HORA DE PONERNOS FINOS', with stacked red soda crates on the left and red tables in front. Gentle ease-in and ease-out, settling exactly on the final frame. Preserve the real architecture, colors, lettering and warm lighting exactly. Photorealistic."
+    },
+    {
+      "id": 3,
+      "start": "keyframes/kf-2.png",
+      "end": "keyframes/kf-3.png",
+      "move": "push",
+      "focus": [
+        0.45,
+        0.62
+      ],
+      "prompt": "Smooth first-person POV in a burger restaurant. One continuous take on a steady gimbal. The camera lowers and pushes forward toward a red table in front of the yellow-lettered wall, closing in on a burger in printed FINO paper wrap until it fills the frame in close-up: a glossy sesame bun, a seared smashed beef patty with melted cheddar, red onion and sauce, red table behind. As the camera approaches, the frame naturally widens from the centered vertical photo to the full 16:9 close-up. Gentle ease-in and ease-out, settling exactly on the final frame. Photorealistic food cinematography."
+    }
+  ]
+}

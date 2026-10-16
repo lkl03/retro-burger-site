@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.5.0 · 2026-10-16
+
+- El paseo arranca en la hamburguesa: clips invertidos (hamburguesa → pared → barra), 3 paradas. Hero con el logo centrado, "Es hora de ponernos finos" como bajada y dos botones (Mirá nuestro menú · Dónde estamos).
+- La nav aparece recién desde la segunda parada; links "Nuestro menú", "Dónde estamos" y "Seguinos en redes"; logo más grande.
+- Sistema único de botones (`.btn-solid` → hover dorado con texto vino; `.btn-outline` crema → hover relleno crema).
+- Menú en dos cartas que entran de los costados (hamburguesas/especiales/clásicas · sides/milkshakes/dips/bebidas), título afuera. Fuera "por tiempo limitado".
+- Dónde estamos en dos cards: datos + cómo llegar · mapa + 3 reseñas reales de Google + ver más reseñas.
+- Nueva sección "Nuestras redes" sobre fondo sólido con brillos: @fino_arg, carrusel con 12 posts (flechas, arrastre, snap).
+- Marquee con perks del local; footer con los links de la nav y "Volver arriba"; chevron sin círculo.
+
+## 0.4.0 · 2026-10-16
+
+- Logo oficial de FINO (vectorizado del archivo del local, `components/Logo.tsx`) en nav, hero y footer; fuera la mascota dibujada a mano.
+- El contenido vive sobre el paseo: entrada → hero "Es hora de ponernos finos", barra → **menú completo** (carta textual de la pantalla del local: hamburguesas, especiales, clásicas, sides, milkshakes, dips, bebidas), pared → **dónde estamos** (datos, mapa, rating de Google), burger → **Instagram** (los 8 posts más recientes). Tarjetas crema sobre el vídeo.
+- Pausa de cámara por parada (`data-hold` en el motor) para que el vídeo no avance mientras se lee una tarjeta larga.
+- Chevron en vez de "Bajá para entrar"; se quitó la nota de IA del escenario.
+- Motion de entrada: cada bloque sube y aparece la primera vez que se ve su parada (`.fw-in` + `.is-seen`); nav entra al cargar.
+- Fuera: avisos de la casa, fondos checker y grain, secciones duplicadas de menú/IG/contacto. Footer simple en crema con logo + crédito de eterlab.
+
+## 0.3.0 · 2026-10-16
+
+- **Paseo por el local con el scroll** (motor scroll-walk, `components/ScrollWalk.tsx` + `lib/scroll-walk.js`): reemplaza al hero. 4 paradas (entrada con la pared FINO → barra con el menú → pared "Es hora de ponernos finos" → la Fino) unidas por 3 clips. El scroll fija el `currentTime` del vídeo, hacia adelante y hacia atrás.
+- Clips generados con Google Flow (Veo 3.1 Fast, 60 créditos de Flow) desde fotos reales del local publicadas en Google Maps. Fotos verticales con relleno desenfocado a 16:9. Clip 2 y 3 retocados en local (inicio del 3 sin letterbox, finales fundidos al keyframe exacto): ver `media/scroll-walk/patch_*.py`. Aviso en pantalla: "Recorrido animado con IA a partir de fotos reales del local".
+- **Instagram**: grilla de 8 posts reales de @fino_arg (fotos en `public/ig/`, captions textuales) con título "Fino es ser fino" (lema real de la cuenta). Feed en vivo opcional con `NEXT_PUBLIC_ELFSIGHT_IG_APP`.
+- **Dónde estamos** rehecho al estilo HKS: lista de datos con íconos (dirección + referencia del parque, horarios, Instagram, sin TACC), mapa grande y tarjeta del perfil de Google con rating real (4,7 · 1.436 reseñas, verificado 2026-10-16).
+- Nav fija; se quitaron Hero, La casa y la galería con placeholders. Tabla de clásicas entra en 390 px sin scroll horizontal.
+
 ## 0.2.0 · 2026-07-09
 
 - Copy realineado a la marca real: se eliminó todo el lore inventado ("la jefa", "jefa espiritual", "la pared de la jefa", "burger que se cree fina") y las promos ficticias (partido, martes de cheeseburger). La mascota queda como recurso gráfico.

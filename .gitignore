@@ -41,3 +41,10 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# scroll-walk: trabajo de IA (masters, descargas de Flow, fotos fuente). Solo se versionan plan.json y los scripts.
+/media/scroll-walk/*
+!/media/scroll-walk/plan.json
+!/media/scroll-walk/patch_*.py
+/_qa/
+!/media/scroll-walk/trace_logo.py

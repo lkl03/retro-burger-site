@@ -1,10 +1,6 @@
-const words = [
-  "Smash burgers",
-  "Papas Finas",
-  "Opción sin TACC",
-  "Colegiales",
-  "Moldes 880",
-];
+import { perks } from "@/data/site";
+
+const words = perks;
 
 export function Marquee() {
   return (
