@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 · 2026-10-16
+
+- El paseo arranca en la hamburguesa: clips invertidos (hamburguesa → pared → barra), 3 paradas. Hero con el logo centrado, "Es hora de ponernos finos" como bajada y dos botones (Mirá nuestro menú · Dónde estamos).
+- La nav aparece recién desde la segunda parada; links "Nuestro menú", "Dónde estamos" y "Seguinos en redes"; logo más grande.
+- Sistema único de botones (`.btn-solid` → hover dorado con texto vino; `.btn-outline` crema → hover relleno crema).
+- Menú en dos cartas que entran de los costados (hamburguesas/especiales/clásicas · sides/milkshakes/dips/bebidas), título afuera. Fuera "por tiempo limitado".
+- Dónde estamos en dos cards: datos + cómo llegar · mapa + 3 reseñas reales de Google + ver más reseñas.
+- Nueva sección "Nuestras redes" sobre fondo sólido con brillos: @fino_arg, carrusel con 12 posts (flechas, arrastre, snap).
+- Marquee con perks del local; footer con los links de la nav y "Volver arriba"; chevron sin círculo.
+
 ## 0.4.0 · 2026-10-16
 
 - Logo oficial de FINO (vectorizado del archivo del local, `components/Logo.tsx`) en nav, hero y footer; fuera la mascota dibujada a mano.

@@ -1,4 +1,4 @@
-import { nav, site } from "@/data/site";
+import { nav, navCta, site } from "@/data/site";
 import { Icon } from "./Icons";
 import { Logo } from "./Logo";
 
@@ -16,21 +16,21 @@ export function Footer() {
           <p className="mt-5 text-sm font-semibold uppercase tracking-wide">
             {street} · {site.neighborhood}, CABA
           </p>
-          <p className="mt-1 text-sm text-tinta/70">
-            Todos los días · {site.hours.map((h) => h.time).join("  ·  ")}
-          </p>
+          <p className="mt-1 text-sm text-tinta/70">Todos los días · {site.hours.map((h) => h.time).join("  ·  ")}</p>
         </div>
 
-        <nav aria-label="Pie" className="flex flex-wrap gap-x-7 gap-y-3 text-sm font-bold uppercase tracking-wide">
-          {nav.map((n) => (
-            <a key={n.href} href={n.href} className="link-line">
-              {n.label}
-            </a>
-          ))}
-          <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="link-line inline-flex items-center gap-1.5">
-            <Icon.Instagram className="h-4 w-4" /> {site.instagramHandle}
+        <div className="flex flex-col items-start gap-6 md:items-end">
+          <nav aria-label="Pie" className="flex flex-wrap gap-x-7 gap-y-3 text-sm font-bold uppercase tracking-wide">
+            {[...nav, navCta].map((n) => (
+              <a key={n.href} href={n.href} className="link-line">
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <a href="#inicio" className="btn btn-solid btn-solid--vino">
+            Volver arriba <Icon.Arrow className="-rotate-45" />
           </a>
-        </nav>
+        </div>
       </div>
 
       {/* eterlab credit */}

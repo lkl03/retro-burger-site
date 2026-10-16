@@ -1,10 +1,6 @@
-const words = [
-  "Es hora de ponernos finos",
-  "Moldes 880",
-  "Fino es ser fino",
-  "Colegiales",
-  "Opción sin TACC",
-];
+import { perks } from "@/data/site";
+
+const words = perks;
 
 export function Marquee() {
   return (

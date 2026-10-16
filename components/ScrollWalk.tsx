@@ -4,26 +4,27 @@ import { useEffect, useRef } from "react";
 import { site } from "@/data/site";
 import { mountScrollWalk } from "@/lib/scroll-walk";
 import { Logo } from "./Logo";
-import { ContactPanel, InstagramPanel, MenuPanel } from "./WalkPanels";
+import { ContactStop, MenuStop } from "./WalkPanels";
 
 /*
  * Paseo por el local con el scroll (motor en lib/scroll-walk.js).
- * 4 paradas = 4 pósters (frames reales del vídeo) + 3 clips que unen cada
- * parada con la siguiente. Sobre cada parada va contenido real del local:
- * entrada → hero, barra → menú, pared → dónde estamos, burger → Instagram.
- * Los clips salen de Google Flow / Veo a partir de fotos reales del local
- * (media/scroll-walk/plan.json). Para la versión final alcanza con regenerar
- * public/video y public/world: este componente no cambia.
+ * 3 paradas = 3 pósters (frames reales del vídeo) + 2 clips. El paseo arranca en
+ * la hamburguesa y la cámara se aleja hacia la pared "Es hora de ponernos finos"
+ * y después gira hacia la barra:
+ *   hamburguesa → hero · pared → menú · barra → dónde estamos
+ * Los clips son los de Google Flow / Veo invertidos (media/scroll-walk/clips-v2,
+ * ver plan.json). Para la versión final alcanza con regenerar public/video y
+ * public/world: este componente no cambia.
  *
  * data-hold = fracción del tramo en la que la cámara queda quieta: más alta en
- * las paradas con tarjetas largas, para que no se mueva mientras se lee.
+ * las paradas con tarjetas, para que no se mueva mientras se lee.
+ * La nav aparece recién desde la segunda parada (html[data-nav]).
  */
 
 const STOPS = [
-  { id: "inicio", label: "Inicio", hold: 0.24, panel: null },
-  { id: "menu", label: "Menú", hold: 0.62, panel: <MenuPanel /> },
-  { id: "donde", label: "Dónde estamos", hold: 0.5, panel: <ContactPanel /> },
-  { id: "instagram", label: "Instagram", hold: 0.5, panel: <InstagramPanel /> },
+  { id: "inicio", label: "Inicio", hold: 0.2, content: null },
+  { id: "menu", label: "Nuestro menú", hold: 0.55, content: <MenuStop /> },
+  { id: "donde", label: "Dónde estamos", hold: 0.55, content: <ContactStop /> },
 ];
 
 const d = (ms: number) => ({ "--d": ms }) as React.CSSProperties;
@@ -33,14 +34,24 @@ export function ScrollWalk() {
 
   useEffect(() => {
     if (!ref.current) return;
-    const sw = mountScrollWalk(ref.current);
+    const html = document.documentElement;
+    const sw = mountScrollWalk(ref.current, {
+      onStop: (i: number) => html.toggleAttribute("data-nav", i >= 1),
+    });
+    // Pasado el paseo (redes, footer) la nav sigue visible.
+    const onScroll = () => {
+      if (ref.current && scrollY > ref.current.offsetHeight * 0.5) html.setAttribute("data-nav", "");
+    };
+    addEventListener("scroll", onScroll, { passive: true });
     document.fonts?.ready.then(() => sw.refresh());
     // El mapa y las fotos cambian alturas al cargar: re-medir.
     const ro = new ResizeObserver(() => sw.refresh());
     ro.observe(ref.current.querySelector(".sw-stops")!);
     return () => {
+      removeEventListener("scroll", onScroll);
       ro.disconnect();
       sw.destroy();
+      html.removeAttribute("data-nav");
     };
   }, []);
 
@@ -72,6 +83,7 @@ export function ScrollWalk() {
           />
         ))}
         <div className="sw-veil" />
+        <div className="fino-walk__heroveil" />
         <nav className="sw-rail" aria-label="Secciones">
           {STOPS.map((s) => (
             <a key={s.id} data-sw-goto href={`#${s.id}`} aria-label={s.label} />
@@ -92,38 +104,23 @@ export function ScrollWalk() {
             data-sw-stop
             data-focus={50}
             data-hold={s.hold}
-            className={`sw-stop ${s.panel ? "fw-stop--panel" : ""}`}
+            className={`sw-stop ${s.content ? "fw-stop--panel" : ""}`}
           >
             <div className="sw-copy">
-              {s.panel ?? (
+              {s.content ?? (
                 <>
-                  <Logo className="fw-in h-auto w-[clamp(8rem,11vw,10rem)] text-crema" title="FINO" />
-                  <p className="fw-in fino-walk__eyebrow mt-6" style={d(120)}>
-                    {site.address.split(",")[0]} · {site.neighborhood}
-                  </p>
-                  <h1 className="fw-in display mt-3 text-[clamp(3.1rem,6vw,5.4rem)]" style={d(200)}>
-                    Es hora de
-                    <br />
-                    <span className="text-manteca">ponernos finos.</span>
+                  <h1 className="fw-in">
+                    <Logo className="h-auto w-[clamp(13rem,30vw,22rem)] text-crema drop-shadow-[0_8px_30px_rgba(20,3,8,.55)]" title="FINO" />
                   </h1>
-                  <p className="fw-in mt-5 max-w-md text-[1.05rem] leading-relaxed text-crema/85" style={d(300)}>
-                    Hamburguesas, papas y milkshakes en {site.address.split(",")[0]}, al lado de la plaza de Colegiales.
-                    Todos los días, {site.hours.map((h) => h.time.replace(/ /g, "")).join(" y ")}.
+                  <p className="fw-in display mt-6 text-[clamp(1.5rem,2.6vw,2.2rem)] text-manteca" style={d(180)}>
+                    {site.wallLine}
                   </p>
-                  <div className="fw-in mt-8 flex flex-wrap gap-3" style={d(400)}>
-                    <a
-                      href="#menu"
-                      className="pressable rounded-full bg-crema px-6 py-3 text-sm font-bold uppercase tracking-wide text-vino transition-colors duration-200 hover:bg-manteca"
-                    >
-                      Ver el menú
+                  <div className="fw-in mt-9 flex flex-wrap justify-center gap-3" style={d(320)}>
+                    <a href="#menu" className="btn btn-solid">
+                      Mirá nuestro menú
                     </a>
-                    <a
-                      href={site.google.directionsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pressable rounded-full border-2 border-crema/70 px-6 py-3 text-sm font-bold uppercase tracking-wide text-crema transition-colors duration-200 hover:bg-crema hover:text-vino"
-                    >
-                      Cómo llegar
+                    <a href="#donde" className="btn btn-outline">
+                      Dónde estamos
                     </a>
                   </div>
                 </>

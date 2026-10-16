@@ -38,9 +38,9 @@ export const site = {
   wallLine: "Es hora de ponernos finos",
 };
 
-// Los 8 posts más recientes de @fino_arg al 2026-10-16 (fotos en public/ig/).
-// Las captions son textuales del post, recortadas. Para un feed en vivo, ver
-// NEXT_PUBLIC_ELFSIGHT_IG_APP en components/WalkPanels.tsx.
+// Posts más recientes de @fino_arg al 2026-10-16 (fotos en public/ig/, captions
+// textuales recortadas). Para un feed en vivo ver NEXT_PUBLIC_ELFSIGHT_IG_APP en
+// components/Socials.tsx.
 export const igPosts = [
   { code: "DbRWDDgh7Qa", kind: "reel", caption: "quién es la abuela del logo de fino? 🧐 misterio develado" },
   { code: "DeiFUViFTkL", kind: "p", caption: "extrañamos el solcito para disfrutar en la plaza de al lado de fino 🍔" },
@@ -50,10 +50,44 @@ export const igPosts = [
   { code: "Dd7VOvJhnRG", kind: "p", caption: "quién fue el culpable de esta mordida?" },
   { code: "DdzsV5XOeHW", kind: "reel", caption: "cumplimos sueño! nos vemos en el burgerpalusa ❤️🍔" },
   { code: "DdsAPyNlZCm", kind: "p", caption: "nuestro lema de fino ❤️" },
+  { code: "Ddm03PAu-kf", kind: "reel", caption: "cosas que pensamos que iban a salir de una manera y salieron de otra 🤔" },
+  { code: "DdUyWRVu29c", kind: "reel", caption: "el día de la cheeseburger 🍔 simples, dobles y triples" },
+  { code: "DdH4sgyOcBD", kind: "reel", caption: "seguimos mejorando día a día ❤️" },
+  { code: "DczQ3uMOUQp", kind: "reel", caption: "una sorpresa en fino 😯" },
 ] as const;
 
-export const nav = [
-  { label: "Menú", href: "#menu" },
-  { label: "Dónde", href: "#donde" },
-  { label: "Instagram", href: "#instagram" },
+// Reseñas reales del perfil de Google (textuales, recortadas como las muestra
+// Google; fechas relativas al 2026-10-16). Actualizar a mano.
+export const reviews = [
+  {
+    author: "Federico Tokman",
+    when: "hace 3 meses",
+    text: "De lo más rico que probé! Muy buena variedad e increíble la calidad de los productos. Muy buena onda también de todo el personal y Lula y Rama son los número 1.",
+  },
+  {
+    author: "Daniela Luján Herrero",
+    when: "hace 2 meses",
+    text: "Exquisitas estas hamburguesas al igual que las papas fritas, son abundantes y están muy bien condimentadas. El lugar también es amplio y está muy bien decorado…",
+  },
+  {
+    author: "Agostina Déborah Nuñez",
+    when: "hace 3 meses",
+    text: "Destacamos el servicio de Santiago quien nos ayudó a acomodarnos en la mesa, muy servicial y dispuesto. La comida excelente, hace rato no probábamos una hamburguesa tan rica…",
+  },
+] as const;
+
+// Datos del perfil de Google (Maps: "Consumo en el lugar · Para llevar") y de la carta.
+export const perks = [
+  "Abierto todos los días",
+  "Mediodía y noche",
+  "Para comer acá o llevar",
+  "Opción sin TACC",
+  "Milkshakes",
+  "Al lado de la plaza",
 ];
+
+export const nav = [
+  { label: "Nuestro menú", href: "#menu" },
+  { label: "Dónde estamos", href: "#donde" },
+];
+export const navCta = { label: "Seguinos en redes", href: "#redes" };
