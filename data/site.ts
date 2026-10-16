@@ -1,8 +1,8 @@
 export const site = {
   name: "FINO",
-  tagline: "Hamburguesas finas, cero vueltas.",
+  tagline: "Es hora de ponernos finos.",
   description:
-    "FINO es una hamburguesería en Colegiales, Buenos Aires. Carta corta, smash burgers y opción de pan sin TACC. Moldes 880, CABA.",
+    "FINO, hamburguesería en Moldes 880, Colegiales. Menú, horarios, cómo llegar y lo último de @fino_arg. Todos los días, mediodía y noche.",
   url: "https://retro-burger-site.vercel.app",
   instagram: "https://www.instagram.com/fino_arg",
   instagramHandle: "@fino_arg",

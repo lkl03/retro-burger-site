@@ -17,7 +17,7 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "FINO · Hamburguesería en Buenos Aires",
+    default: "FINO · Es hora de ponernos finos",
     template: "%s · FINO",
   },
   description: site.description,
@@ -26,12 +26,11 @@ export const metadata: Metadata = {
     "burgers",
     "Colegiales",
     "Buenos Aires",
-    "smash burger",
     "FINO",
     "Moldes 880",
   ],
   openGraph: {
-    title: "FINO · Hamburguesas finas, cero vueltas",
+    title: "FINO · Es hora de ponernos finos",
     description: site.description,
     url: site.url,
     siteName: "FINO",
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FINO · Hamburguesería en Buenos Aires",
+    title: "FINO · Es hora de ponernos finos",
     description: site.description,
   },
 };
