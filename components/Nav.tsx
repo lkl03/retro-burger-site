@@ -2,20 +2,17 @@
 
 import { useState } from "react";
 import { nav, site } from "@/data/site";
-import { Mascot } from "./Mascot";
+import { Logo } from "./Logo";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40">
+    <header className="nav-in fixed inset-x-0 top-0 z-40">
       <div className="mx-auto max-w-6xl px-4 pt-4">
         <div className="flex h-16 items-center justify-between rounded-full border-2 border-vino bg-crema/95 px-5 backdrop-blur-sm">
-          <a href="#top" className="flex items-center gap-2" aria-label="FINO, inicio">
-            <span className="display text-2xl leading-none">FIN</span>
-            <span className="relative -ml-2 inline-flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-vino">
-              <Mascot className="absolute -top-4 left-1 h-6 w-6" />
-            </span>
+          <a href="#inicio" className="flex items-center text-vino" aria-label="FINO, inicio">
+            <Logo className="h-11 w-auto" title="FINO" />
           </a>
 
           <nav className="hidden items-center gap-7 md:flex" aria-label="Principal">

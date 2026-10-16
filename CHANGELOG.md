@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 · 2026-10-16
+
+- Logo oficial de FINO (vectorizado del archivo del local, `components/Logo.tsx`) en nav, hero y footer; fuera la mascota dibujada a mano.
+- El contenido vive sobre el paseo: entrada → hero "Es hora de ponernos finos", barra → **menú completo** (carta textual de la pantalla del local: hamburguesas, especiales, clásicas, sides, milkshakes, dips, bebidas), pared → **dónde estamos** (datos, mapa, rating de Google), burger → **Instagram** (los 8 posts más recientes). Tarjetas crema sobre el vídeo.
+- Pausa de cámara por parada (`data-hold` en el motor) para que el vídeo no avance mientras se lee una tarjeta larga.
+- Chevron en vez de "Bajá para entrar"; se quitó la nota de IA del escenario.
+- Motion de entrada: cada bloque sube y aparece la primera vez que se ve su parada (`.fw-in` + `.is-seen`); nav entra al cargar.
+- Fuera: avisos de la casa, fondos checker y grain, secciones duplicadas de menú/IG/contacto. Footer simple en crema con logo + crédito de eterlab.
+
 ## 0.3.0 · 2026-10-16
 
 - **Paseo por el local con el scroll** (motor scroll-walk, `components/ScrollWalk.tsx` + `lib/scroll-walk.js`): reemplaza al hero. 4 paradas (entrada con la pared FINO → barra con el menú → pared "Es hora de ponernos finos" → la Fino) unidas por 3 clips. El scroll fija el `currentTime` del vídeo, hacia adelante y hacia atrás.

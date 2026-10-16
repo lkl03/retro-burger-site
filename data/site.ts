@@ -38,24 +38,22 @@ export const site = {
   wallLine: "Es hora de ponernos finos",
 };
 
-// Posts reales de @fino_arg (fotos bajadas del feed el 2026-10-16, en public/ig/).
+// Los 8 posts más recientes de @fino_arg al 2026-10-16 (fotos en public/ig/).
 // Las captions son textuales del post, recortadas. Para un feed en vivo, ver
-// NEXT_PUBLIC_ELFSIGHT_IG_APP en components/InstagramFeed.tsx.
+// NEXT_PUBLIC_ELFSIGHT_IG_APP en components/WalkPanels.tsx.
 export const igPosts = [
-  { code: "DdsAPyNlZCm", kind: "p", caption: "nuestro lema de fino ❤️" },
-  { code: "Dd7VOvJhnRG", kind: "p", caption: "quién fue el culpable de esta mordida?" },
-  { code: "DeFtbE2hgkQ", kind: "reel", caption: "encontramos la mantequita. veni a probarla 🧈❤️" },
-  { code: "DeiFUViFTkL", kind: "p", caption: "extrañamos el solcito para disfrutar en la plaza de al lado de fino 🍔" },
   { code: "DbRWDDgh7Qa", kind: "reel", caption: "quién es la abuela del logo de fino? 🧐 misterio develado" },
-  { code: "DeQAzxnuqFd", kind: "reel", caption: "nueva hamburguesa en fino por tiempo limitadoooo 🍔" },
-  { code: "DdH4sgyOcBD", kind: "reel", caption: "seguimos mejorando día a día ❤️" },
+  { code: "DeiFUViFTkL", kind: "p", caption: "extrañamos el solcito para disfrutar en la plaza de al lado de fino 🍔" },
+  { code: "DeaTKWqurPH", kind: "reel", caption: "buscando una nueva hamburguesa para fino. la ponemos en el menú? 🍔🤠" },
+  { code: "DeQAzxnuqFd", kind: "reel", caption: "nueva hamburguesa en fino por tiempo limitadoooo, vengan a probarla 🍔" },
+  { code: "DeFtbE2hgkQ", kind: "reel", caption: "encontramos la mantequita. veni a probarla 🧈❤️" },
+  { code: "Dd7VOvJhnRG", kind: "p", caption: "quién fue el culpable de esta mordida?" },
   { code: "DdzsV5XOeHW", kind: "reel", caption: "cumplimos sueño! nos vemos en el burgerpalusa ❤️🍔" },
+  { code: "DdsAPyNlZCm", kind: "p", caption: "nuestro lema de fino ❤️" },
 ] as const;
 
 export const nav = [
-  { label: "El local", href: "#paseo" },
   { label: "Menú", href: "#menu" },
-  { label: "Avisos", href: "#avisos" },
-  { label: "Instagram", href: "#instagram" },
   { label: "Dónde", href: "#donde" },
+  { label: "Instagram", href: "#instagram" },
 ];

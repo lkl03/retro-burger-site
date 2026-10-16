@@ -1,9 +1,9 @@
 const words = [
-  "Smash burgers",
-  "Papas Finas",
-  "Opción sin TACC",
-  "Colegiales",
+  "Es hora de ponernos finos",
   "Moldes 880",
+  "Fino es ser fino",
+  "Colegiales",
+  "Opción sin TACC",
 ];
 
 export function Marquee() {
