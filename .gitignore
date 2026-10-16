@@ -47,3 +47,4 @@ next-env.d.ts
 !/media/scroll-walk/plan.json
 !/media/scroll-walk/patch_*.py
 /_qa/
+!/media/scroll-walk/trace_logo.py
